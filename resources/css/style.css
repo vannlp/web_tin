@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --text-color-primary: #515962;
+    --color-primary: #7FCB2B;
+    --bg-dark: #222222;
+    
+}
+
+
+
+.auth-bg{
+    background-image: linear-gradient(to top right, #7B8FE5, #E739F3);
+}
