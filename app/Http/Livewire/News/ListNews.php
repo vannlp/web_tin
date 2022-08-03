@@ -13,6 +13,8 @@ class ListNews extends Component
     public $search = '';
     public $pageNumber = 5;
     public $type;
+    public $action = 0;
+    public $listDelete = [];
 
     public function mount() {
         $this->post = new Post();
@@ -28,13 +30,35 @@ class ListNews extends Component
         $this->resetPage();
     }
 
-    public function getPost($typePost = null) {
-        if($typePost && $this->search == '') {
-            return $this->post->orderBy($typePost, 'desc')->paginate($this->pageNumber);
-        }else{
-            return $this->post->where('title', 'like','%'.$this->search.'%')->paginate($this->pageNumber);
+    public function submitAction() {
+        if ($this->action === 0)  return false;
+        switch($this->action) {
+            case 'delete':
+                if(count($this->listDelete) === 0) return false;
+                for($i = 0; $i < count($this->listDelete); $i++){
+                    Post::where('id', $this->listDelete[$i])->delete();
+                }
+                $this->resetPage();
+            break;
+            case 'hot_post': 
+                $this->type = 'hot_post';
+                // dd($this->post->where('hot_post', 0)->paginate($this->pageNumber));
+                break;
         }
     }
+
+    public function getPost($typePost = null) {
+        if($typePost && $this->search == '' && $typePost != 'hot_post' ) {
+            return $this->post->orderBy($typePost, 'desc')->paginate($this->pageNumber);
+        }else if($typePost == 'hot_post'){
+            return $this->post->where('hot_post', '=' , 0)->paginate($this->pageNumber);
+        }
+        else{
+            return $this->post->where('title', 'like','%'.$this->search.'%')->orderBy('created_at', 'desc')->paginate($this->pageNumber);
+        }
+    }
+
+    
 
     public function render()
     {

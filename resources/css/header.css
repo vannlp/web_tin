@@ -1,8 +1,6 @@
 .header{
     padding: 10px 0;
     box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.278);
-    position: sticky;
-    top: 0;
 }
 
 .header-wrapper{
@@ -90,6 +88,8 @@
     top: 100%;
     padding: 15px 25px;
     box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.275);
+    z-index: 1000;
+    background-color: white;
 }
 
 .header-search-top{
@@ -194,6 +194,41 @@
     right: 20px;
     font-size: 40px;
     color: white;
+}
+
+.menu-account{
+    position: absolute;
+    padding: 10px 0;
+    top: 90%;
+    right: 0;
+    width: 200px;
+    background-color: #eee;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: transform .2s linear;
+}
+
+.menu-account-item>a, .menu-account-btn{
+    display: block;
+    color: var(--text-color-primary);
+    padding: 5px 20px;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.menu-account-item>a:hover {
+    color: var(--color-primary);
+}
+
+.header-mxh-item.position-relative:hover .menu-account{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media screen and (max-width: 1000px) {

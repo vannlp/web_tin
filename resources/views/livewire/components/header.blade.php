@@ -8,20 +8,17 @@
 
                 <div class="header-left">
                     <a class="header-logo">
-                        <img src="http://mauweb.monamedia.net/gamehub/wp-content/uploads/2019/04/logo-mona-300x75.png" alt="">
+                        <img src="{{asset($logo)}}" alt="">
                     </a>
                     <ul class="header-list">
                         <li class="header-item">
-                            <a href="#">Tin tức</a>
+                            <a href="/">Trang chủ</a>
                         </li>
                         <li class="header-item">
-                            <a href="#">Giftcode</a>
+                            <a href="/lien-he">Liên hệ</a>
                         </li>
                         <li class="header-item">
-                            <a href="#">Khám phá</a>
-                        </li>
-                        <li class="header-item">
-                            <a href="#">Công nghệ</a>
+                            <a href="#">Hỗ trợ</a>
                         </li>
                     </ul>
                 </div>
@@ -32,9 +29,44 @@
                     <a href="#" class="header-mxh-item">
                         <i class="bi bi-facebook"></i>
                     </a>
-                    <a href="#" class="header-mxh-item">
-                        <i class="bi bi-facebook"></i>
-                    </a>
+                    <div class="header-mxh-item position-relative">
+                        <a href="">
+                            @if (Auth::check())
+                            <div class="comment-item-avata">
+                                <img src="{{asset(Auth::user()->avatar)}}"  alt="">
+                            </div>
+                            
+                            @else
+                                <i class="bi bi-person-circle"></i>
+                            @endif
+
+                        </a>
+                        <ul class="menu-account">
+                            @if (Auth::check())
+                                <li class="menu-account-item">
+                                    <a href="{{url('/account')}}">Quản lý tài khoản</a>
+                                </li>
+                                @if (Auth::user()->role === 0 || Auth::user()->role === 2)
+                                    <li class="menu-account-item">
+                                        <a href="/admin">Admin</a>
+                                    </li>
+                                @endif
+                                <li class="menu-account-item">
+                                    <form action="{{route('logout')}}" method="post">
+                                        @csrf
+                                        <button class="menu-account-btn" type="submit">Thoát</button>
+                                    </form>
+                                </li>
+                            @else
+                                <li class="menu-account-item">
+                                    <a href="/login">Đăng nhập</a>
+                                </li>
+                                <li class="menu-account-item">
+                                    <a href="/register">Đăng ký</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
 
                 <button class="header-search-btn-top header-search-btn">
@@ -66,18 +98,12 @@
     <nav class="container header-nav">
         <div class="header-cate">
             <ul class="header-cate-list">
+                @foreach ($categories as $item)    
                 <li class="header-cate-item">
-                    <a href="">Game online</a>
+                    <a href="{{url("/danh-muc/{$item->slug}")}}">{{$item->name}}</a>
                 </li>
-                <li class="header-cate-item">
-                    <a href="">Game online</a>
-                </li>
-                <li class="header-cate-item">
-                    <a href="">Game online</a>
-                </li>
-                <li class="header-cate-item">
-                    <a href="">Game online</a>
-                </li>
+                @endforeach
+                
             </ul>
     
             <div class="header-search" x-data="{search: false}">

@@ -2,17 +2,26 @@
 
 namespace App\Http\Livewire\Components;
 
+use App\Models\Additional_info;
 use Livewire\Component;
 use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class Header extends Component
 {
     public $search = '';
+    public $logo;
 
     // public function updatingSearch()
     // {
     //     $this->resetPage();
     // }
+
+    public function mount() {
+        $this->logo = Additional_info::where('title', 'logo')->value('content');
+    }
+
 
 
     public function render()
@@ -23,8 +32,11 @@ class Header extends Component
             $data = Post::where('title', 'like', '%'.$this->search.'%')->get();
         }
 
+        $categories = Category::orderBy('id', 'asc')->limit(7)->get();
+
         return view('livewire.components.header',[
-            'searchdata' => $data
+            'searchdata' => $data,
+            'categories' => $categories
         ]);
     }
 }

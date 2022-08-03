@@ -7,7 +7,9 @@
 
     <div class="py-12 flex-[1_1_80%] bg-white">
         <div class="max-w-full  px-5">
-            <form action="{{url('/admin/category')}}" method="post">
+            <form action="{{route('category.update', [$category->id])}}" method="post">
+                @csrf
+                @method('PUT')
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -37,7 +39,7 @@
                     </x-btn.select>
                 </div>
 
-                <x-button type="submit" name="add" class="bg-gray-600">Thêm</x-button>
+                <x-button type="submit" name="add" class="bg-gray-600">Cập nhập</x-button>
             </form>
         </div>
     </div>

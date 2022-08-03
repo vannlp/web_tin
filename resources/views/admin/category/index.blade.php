@@ -10,6 +10,8 @@
             {{--
             <livewire:category.list-category :categories="$categories" /> --}}
             <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -48,6 +50,13 @@
                                     disabled:opacity-25 transition ease-in-out duration-150">
                                     Edit
                                 </a>
+
+                                <form action="{{route('category.destroy', [$category->id])}}" onsubmit="return confirm('Bạn có thực sự muốn xóa')" method="post" style="display: inline-block">
+                                    @method('DELETE')
+                                    @csrf
+                                    <x-btn.button2  class="bg-red-400" typeBtn="button" type="submit">Delete</x-btn.button2>
+                                </form>
+                                
                             </th>
                         </tr>
                         @endforeach

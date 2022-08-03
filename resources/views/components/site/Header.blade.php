@@ -27,10 +27,12 @@
                 <a href="#" class="header-mxh-item">
                     <i class="bi bi-facebook"></i>
                 </a>
-                <a href="#" class="header-mxh-item">
-                    <i class="bi bi-facebook"></i>
-                </a>
+                <div class="header-mxh-item">
+                    <a href=""><i class="bi bi-person-circle"></i></a>
+                    
+                </div>
             </div>
+
         </div>
     </div>
 </header>

@@ -90,7 +90,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'max:255', 'min:6' ],
+            'slug' => ['required', 'max:255', 'min:6']
+        ]);
+
+        Category::where('id', $id)->update([
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'parent_id' => $request->parent_id
+        ]);
+
+        return redirect()->back()->with('status', 'Cập nhập danh mục thành công');
     }
 
     /**
@@ -101,6 +112,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+
+        return redirect()->back()->with('status', 'Xóa danh mục thành công');
     }
 }

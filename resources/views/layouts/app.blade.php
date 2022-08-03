@@ -9,10 +9,12 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
+
 
         @livewireStyles
     </head>
@@ -29,7 +31,7 @@
 
             <!-- Page Content -->
             <main class="mt-3">
-                <div class="flex">
+                <div class="flex min-h-screen">
                     <x-admin.navleft />
                     {{ $slot }}
                 </div>

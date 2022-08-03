@@ -20,7 +20,7 @@
     
 
     @if (isset($dropdown))
-        <ul x-show="open" class="pl-8 border-solid border-l-2 border-blue-400 ml-5">
+        <ul x-show="open" class="pl-8 border-solid border-l-2 border-blue-400 ml-5" x-transition>
             {{$dropdown}}
         </ul>
     @endif

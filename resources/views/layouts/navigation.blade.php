@@ -16,7 +16,19 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div class="">
+                                <img class="object-cover w-[30px] h-[30px]  rounded-full"
+                                src="{{asset(Auth::user()->avatar)}}" alt=""> 
+                            </div>
+
+                            <div class="flex flex-col text-left ml-5">
+                                <span>{{ Auth::user()->name }}</span>
+                                @if (Auth::user()->role === 0)
+                                    <span>Admin</span>
+                                @else
+                                    <span>Editer</span>
+                                @endif
+                            </div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
