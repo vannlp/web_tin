@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebInfoController;
@@ -59,8 +60,9 @@ Route::middleware('auth', 'auth.admin')->group(function () {
 // user route
 Route::get('/', HomePage::class);
 Route::get('/danh-muc/{slug}', CatePage::class);
-Route::get('/tin/{slug}', Detail::class);
+Route::get('/tin/{slug}', [DetailController::class, 'index']);
 Route::get('/account', Account::class)->middleware('auth');
 Route::get('/lien-he', ContactPage::class);
+
 
 require __DIR__ . '/auth.php';

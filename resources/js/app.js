@@ -24,19 +24,27 @@ const ctx = document.querySelector('#myChart');
 if (ctx) {
     const atx = ctx.getContext('2d');
 
-    const labels = [
-        'a',
-        'b',
-        'c',
-        'd',
-        'e',
-        'f'
-      ];
-    
+    function getAPi(){
+      return window.axios.get('http://127.0.0.1:8000/api/soluongbaipost');
+    }
+
+    async function handleChartJS(){
+      let data2 = await getAPi();
+      let dataAPI = data2.data
+      console.log(dataAPI);
+
+      const labels = dataAPI.map((value, index) => {
+        return value.name
+      });
+
+      let dataInput = dataAPI.map((value, index) => {
+        return value.countPost
+      });
+      
       const data = {
         labels: labels,
         datasets: [{
-          label: 'My First dataset',
+          label: 'Số bài post',
           backgroundColor: [
             'red',
             'blue',
@@ -46,7 +54,7 @@ if (ctx) {
             'pink'
           ],
           borderColor: 'rgb(255, 99, 132)',
-          data: [5, 10, 5, 30, 20, 30],
+          data: dataInput,
         }]
       };
     
@@ -56,7 +64,11 @@ if (ctx) {
         options: {}
       };
 
-    const myChart = new Chart(document.getElementById('myChart'),config)
+      const myChart = new Chart(document.getElementById('myChart'),config)
+    }
+
+    handleChartJS();
+    
 }
 
 

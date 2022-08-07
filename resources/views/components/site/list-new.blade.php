@@ -13,7 +13,7 @@
                     </span>
                     <div>
                         <span class="list-news-comment">
-                            3
+                            {{$post->comments->count()}}
                         </span>
                     </div>
                 </div>

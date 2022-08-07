@@ -22,6 +22,7 @@ class HomeLayout extends Component
     public $address;
     public $phone;
     public $email;
+    public $test = "hello";
 
     public function __construct()
     {

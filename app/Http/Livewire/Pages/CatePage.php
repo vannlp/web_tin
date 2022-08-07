@@ -19,9 +19,19 @@ class CatePage extends Component
     {
         $category_id = Category::where('slug', $this->slug)->value('id');
         $this->posts = Post::where('category_id', $category_id)->get();
+
+        $postNew = Post::orderBy('created_at', 'desc')->limit(5)->get();
+        $postView = Post::orderBy('views', 'desc')->limit(5)->get();
+
+        $cateHotPost = Post::where('category_id', $category_id)->inRandomOrder()->first();
+        $cateHotPosts = Post::where('category_id', $category_id)->inRandomOrder()->limit(4)->get();
         // dd($postss);
         return view('livewire.pages.cate-page',[
-            'posts' => $this->posts
+            'postNew'=>$postNew,
+            'postView'=>$postView,
+            'postdb'=> $cateHotPost,
+            'posts' => $this->posts,
+            'postdbs' => $cateHotPosts
         ])->layout('layouts/home-layout', ['title' => 'Danh mục tin tức']);
     }
 }

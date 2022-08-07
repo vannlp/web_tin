@@ -45,6 +45,7 @@
         <img  src="https://i.pinimg.com/originals/30/1f/3b/301f3bc4d534302a51899cbc831c7389.gif" alt="">
     </div>
     <livewire:components.header />
+
     
     {{$slot}}
 

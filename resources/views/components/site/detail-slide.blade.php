@@ -6,22 +6,30 @@
             </span>
         </h3>
     </div>
+    
+    
+    <style>
+        .detail-cate-item{
+            display: flex !important;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .detail-cate-item>img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
     <div id="detail-cate-slider">
-        <a class="detail-cate-item">
-            <img src="http://mauweb.monamedia.net/gamehub/wp-content/uploads/2019/04/esport-10-300x173.jpg" alt="">
-            <p>DOTA 2: Top 4 tướng gánh team mạnh nhất ở bản 7.21D</p>
+        @foreach ($data as $key => $item)    
+        
+        <a class="detail-cate-item" href="#" wire:key="item-{{ $item->id }}">
+            <img src="{{asset($item->image)}}" alt="">
+            <p>{{$item->title}}</p>
         </a>
-        <a class="detail-cate-item">
-            <img src="http://mauweb.monamedia.net/gamehub/wp-content/uploads/2019/04/esport-10-300x173.jpg" alt="">
-            <p>DOTA 2: Top 4 tướng gánh team mạnh nhất ở bản 7.21D</p>
-        </a>
-        <a class="detail-cate-item">
-            <img src="http://mauweb.monamedia.net/gamehub/wp-content/uploads/2019/04/esport-10-300x173.jpg" alt="">
-            <p>DOTA 2: Top 4 tướng gánh team mạnh nhất ở bản 7.21D</p>
-        </a>
-        <a class="detail-cate-item">
-            <img src="http://mauweb.monamedia.net/gamehub/wp-content/uploads/2019/04/esport-10-300x173.jpg" alt="">
-            <p>DOTA 2: Top 4 tướng gánh team mạnh nhất ở bản 7.21D</p>
-        </a>
+        
+        @endforeach
+        
     </div>
 </div>

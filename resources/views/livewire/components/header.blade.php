@@ -131,7 +131,7 @@
                             </span>
                         </a> --}}
                         @foreach ($searchdata as $value)
-                        <a class="header-search-content" href="#">
+                        <a class="header-search-content" href="{{url("/tin/{$value->slug}")}}">
                             <img src="{{asset("{$value->image}")}}" alt="">
                             <span>
                                 {{$value->title}}

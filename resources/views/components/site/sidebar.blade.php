@@ -5,17 +5,11 @@
         </span>
     </h4>
     <ul class="sidebar-list">
+        @foreach ($data as $value)    
         <li class="sidebar-item">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, eveniet modi. Dolorum, aliquam! Sint suscipit fugit, soluta dolor nemo maiores numquam laboriosam qui labore eveniet, repellat dolores harum. Maiores, sed.</a>
+            <a href="{{url("/tin/{$value->slug}")}}">{{$value->title}}</a>
         </li>
-        <li class="sidebar-item">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, eveniet modi. Dolorum, aliquam! Sint suscipit fugit, soluta dolor nemo maiores numquam laboriosam qui labore eveniet, repellat dolores harum. Maiores, sed.</a>
-        </li>
-        <li class="sidebar-item">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, eveniet modi. Dolorum, aliquam! Sint suscipit fugit, soluta dolor nemo maiores numquam laboriosam qui labore eveniet, repellat dolores harum. Maiores, sed.</a>
-        </li>
-        <li class="sidebar-item">
-            <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, eveniet modi. Dolorum, aliquam! Sint suscipit fugit, soluta dolor nemo maiores numquam laboriosam qui labore eveniet, repellat dolores harum. Maiores, sed.</a>
-        </li>
+        @endforeach
+        
     </ul>
 </aside>

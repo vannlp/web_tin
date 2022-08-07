@@ -29,7 +29,7 @@ class Header extends Component
         $data = [];
 
         if($this->search != '') {
-            $data = Post::where('title', 'like', '%'.$this->search.'%')->get();
+            $data = Post::where('title', 'like', '%'.$this->search.'%')->limit(5)->get();
         }
 
         $categories = Category::orderBy('id', 'asc')->limit(7)->get();

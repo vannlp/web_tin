@@ -17,4 +17,12 @@ class Post extends Model
         'views' => 0,
         'hot_post' => 1,
     ];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }
