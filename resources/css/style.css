@@ -222,5 +222,97 @@ ul{
 
 .lienhe-title>h2{
     font-size: 40px;
+}
 
+.likes{
+    margin: 20px 0;
+}
+
+.like-btn{
+    background: #eee;
+    font-weight: 600;
+}
+
+.like-btn:hover{
+    background-color: #ccc;
+}
+
+.like-wrapper{
+    position: relative;
+    display: inline-block;
+}
+
+.like-list{
+    position: absolute;
+    left: 0;
+    bottom: 90%;
+    z-index: 9999;
+    display: flex;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border: .5px solid #ccc;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s linear;
+}
+
+.like-wrapper:hover .like-list{
+    visibility: visible;
+    opacity: 1;
+    bottom: 100%;
+}
+
+.like-item{
+}
+
+.like-button{
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px 20px; 
+    display: inline-block;
+    transition: all .2s linear;
+    border-radius: 10px;
+    position: relative;
+}
+
+.like-button:hover{
+    background-color: #eee;
+}
+
+.like-button[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    width: 80px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.like-btn.like{
+    color: #056BE1;
+}
+
+.like-btn.haha{
+    color: #f3ae25;
+}
+
+.like-btn.phan-no{
+    color: red;
+}
+.like-btn.yeu-thich{
+    color: #EA243F;
+}
+.like-count:hover{
+    text-decoration: underline #056BE1;
+    color: #056BE1 !important;
+    cursor: pointer;
 }

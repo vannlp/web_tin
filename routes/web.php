@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UploadFileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebInfoController;
 use App\Http\Livewire\Category\ListCategory;
@@ -63,6 +64,8 @@ Route::get('/danh-muc/{slug}', CatePage::class);
 Route::get('/tin/{slug}', [DetailController::class, 'index']);
 Route::get('/account', Account::class)->middleware('auth');
 Route::get('/lien-he', ContactPage::class);
+Route::put('/account/{id}', [UserController::class, 'updateAccount'])->name('account.put');
+Route::post('/upload-file', [UploadFileController::class, 'index'])->name('upload');
 
 
 require __DIR__ . '/auth.php';

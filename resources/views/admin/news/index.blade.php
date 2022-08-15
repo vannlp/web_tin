@@ -41,7 +41,16 @@
                     <x-btn.textarea name="content" id="content">{{old('content')}}</x-btn.textarea>
                 </div>
                 <script>
-                    CKEDITOR.replace( 'content' );
+
+                    // CKEDITOR.plugins.addExternal( 'uploadimage', '/js', 'plugin.js' );
+                    CKEDITOR.replace( 'content',{
+                        extraPlugins: 'uploadimage',
+                        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+                        filebrowserUploadMethod: 'form',
+                        
+                    } );
+
+
                 </script>
                 <div class="my-2">
                     <x-btn.switch name="hot_post" value="0">Tin tức hot</x-btn.switch>

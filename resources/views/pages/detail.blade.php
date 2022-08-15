@@ -46,6 +46,11 @@
                     <div id="content" class="mt-4 px-3">
                         {!! $post->content !!}
                     </div>
+                    <hr>
+                    @if (Auth::check())
+                    <livewire:components.like :idPost="$idPost" />
+                    @endif
+                    
     
                     <x-site.detail-slide :data="$postLQ" :id="$idPost" />
     

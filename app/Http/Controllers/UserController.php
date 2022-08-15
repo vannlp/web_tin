@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -37,6 +38,30 @@ class UserController extends Controller
         ]);
 
         return redirect()->back()->with('status' ,'Thêm người dùng thành công');
+    }
+
+    public function updateAccount(Request $request, $id) {
+        $request->validate([
+            'name'=> 'required|min:6|max:255',
+            'image' => 'image'
+        ]);
+
+        $user = User::find($id);
+
+        if(isset($request->image)){
+            Storage::delete($user->avatar);
+            $avatar = $request->image->store('images');
+            $user->update([
+                'name' => $request->name,
+                'avatar' => $avatar
+            ]);
+        }else{
+            $user->update([
+                'name' => $request->name,
+            ]);
+        }
+
+        return redirect()->back()->with('status', 'Cập nhập thành công');
     }
 
 }
